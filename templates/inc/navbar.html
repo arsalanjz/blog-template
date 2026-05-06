@@ -1,0 +1,15 @@
+<nav class="main-navbar">
+    <div class="nav-brand">
+        <a href="{% url 'home:home' %}">Home</a>
+    </div>
+
+    <ul class="nav-links">
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'accounts:profile_user' %}" class="nav-btn">Profile</a></li>
+        <li><a href="{% url 'accounts:logout_user' %}" class="nav-btn">Logout</a></li>
+        {% else %}
+        <li><a href="{% url 'accounts:login_user' %}" class="nav-btn">Login</a></li>
+        <li><a href="{% url 'accounts:register_user' %}" class="nav-btn">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="post-detail-container" dir="rtl">
+
+    <a href="javascript:history.back()" class="back-link">
+        <span class="back-icon">➔</span> بازگشت
+    </a>
+
+    <h1 class="detail-title">{{ post.title }}</h1>
+
+
+    <div class="post-meta">
+        <span class="meta-item"><a href="{% url 'accounts:public_profile_user' post.author.username %}" class="author-link">👤 نویسنده: {{ post.author.username }}</a></span>
+        <span class="meta-item">📅 انتشار: {{ post.created|date:"Y/m/d" }}</span>
+        <span class="meta-item">🔄 بروزرسانی: {{ post.updated|date:"Y/m/d" }}</span>
+    </div>
+
+
+    <div class="post-body-box">
+        {{ post.content|linebreaks }}
+    </div>
+
+    {% if request.user == post.author %}
+    <div class="detail-actions">
+
+        <a href="{% url 'posts:update_post' post.id %}" class="action-btn edit-btn">✏️Edit</a>
+        <a href="{% url 'posts:delete_post' post.id %}" class="action-btn delete-btn">🗑️Delete</a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

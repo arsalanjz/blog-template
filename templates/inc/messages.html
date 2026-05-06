@@ -1,0 +1,30 @@
+{% if messages %}
+<div class="toast-container" id="toast-container">
+    {% for msg in messages %}
+        <div class="toast-message {{ msg.tags }}-msg">
+            {{ msg }}
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+
+        const toasts = document.querySelectorAll('.toast-message');
+
+        toasts.forEach(function(toast) {
+
+            setTimeout(function() {
+                toast.classList.add('fade-out');
+
+
+                setTimeout(function() {
+                    toast.remove();
+                }, 500);
+
+            }, 3000);
+        });
+    });
+</script>
+{% endif %}

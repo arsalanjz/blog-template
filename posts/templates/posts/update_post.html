@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="nexus-wrapper" dir="rtl">
+    <div class="nexus-card">
+
+        <div class="nexus-header">
+            <h2>Create new Post</h2>
+        </div>
+
+        <form action="" method="post" class="nexus-form">
+            {% csrf_token %}
+            <div class="nexus-fields">
+                {{ form.as_p }}
+            </div>
+
+            <div class="nexus-actions">
+                <button type="submit" class="btn-nexus-primary">انتشار</button>
+                <a href="javascript:history.back()" class="btn-nexus-secondary">بازگشت</a>
+            </div>
+        </form>
+
+    </div>
+</div>
+{% endblock %}

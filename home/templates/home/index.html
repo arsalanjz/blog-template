@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="search-box">
+        <form action="" method="get" class="frm-search">
+        {{ form.as_p }}
+        <input type="submit" value="Search" class="btn-search">
+        </form>
+    </div>
+    <div class="posts-list" dir="rtl">
+        {% for post in posts %}
+            <a href="{{ post.get_absolute_url }}" class="post-link-wrapper">
+                <div class="post-item-home">
+                    <div class="post-info">
+                        <span class="post-date">{{ post.created|date:"H:i" }}</span>
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        <div class="post-body-box">
+                            {{ post.content|truncatewords:48 }}
+                        </div>
+                        <span class="post-date">{{ post.author }}</span>
+                        <br>
+                        <span class="post-date">{{ post.created|date:"Y/m/d" }}</span>
+                    </div>
+                </div>
+            </a>
+
+        {% empty %}
+            <div class="empty-state">
+                <p>هیچ پستی برای نمایش نیست.</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
