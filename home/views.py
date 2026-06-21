@@ -1,5 +1,4 @@
 from re import search
-
 from django.contrib.postgres.search import SearchVector
 from django.shortcuts import render , get_object_or_404
 from django.views import View

@@ -7,6 +7,7 @@ from posts import urls as posts_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
     path('' , include(home_urls , namespace='home')),
     path('accounts/' , include(accounts_urls , namespace='accounts')),
     path('posts/' , include(posts_urls , namespace='posts')),

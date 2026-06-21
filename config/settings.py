@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
 from pathlib import Path
-
+from config.local_setting import private_secret_key, admin_debug, user_db, pssword_db
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,10 +20,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6)e#4e-^g4uod0duzp$z&qvpbm)loafqe&t18a3#j=-#qw+!v2'
+SECRET_KEY = private_secret_key
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = admin_debug
 
 ALLOWED_HOSTS = []
 
@@ -83,8 +83,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'blog_template_db',
-        'USER': 'blog_template_admin',
-        'PASSWORD': '123456789',
+        'USER': user_db,
+        'PASSWORD': pssword_db,
         'HOST': 'localhost',
         'PORT': '5432',
     }
